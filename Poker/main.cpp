@@ -1,12 +1,14 @@
 #include <SFML/Graphics.hpp>
+#include "Chips.h"
+#include "MainMenu.h"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Poker", sf::Style::Default); // TODO add quit button on main menu or ctrl W support
+    sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Poker", sf::Style::Default);
     window.setVerticalSyncEnabled(true);
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Red);
-    shape.setPosition(sf::Vector2f(0, 0));
+
+    MainMenu menu;
+    menu.setState(true);
 
     while (window.isOpen())
     {
@@ -18,8 +20,11 @@ int main()
         }
 
         window.clear(sf::Color::Green);
+       
         //draw here until display
-        window.draw(shape);
+        if (menu.getState()) {
+            menu.Draw(window);
+        }
         window.display();
     }
 

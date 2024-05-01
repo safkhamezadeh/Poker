@@ -27,6 +27,25 @@ bool Player::isFolded() const {
     return fold;
 }
 
+//TODO implement player actions
+//player actions methods
+
+int Player::raise(int raiseAmount)
+{
+    return 0;
+}
+
+int Player::bet(int betAmount)
+{
+    return 0;
+}
+
+int Player::call(int callAmount)
+{
+    return 0;
+}
+
+
 void Player::setFold(bool fold)
 {
     this->fold = fold;
