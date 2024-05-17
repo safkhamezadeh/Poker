@@ -1,31 +1,35 @@
 #include <SFML/Graphics.hpp>
-#include "Chips.h"
-#include "MainMenu.h"
+#include "screens.hpp"
+#include <vector>
+
+
+/*
+the screen numbers:
+- mainMenuScreen = 0
+- gameScreen = 1
+....
+
+*/
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode::getDesktopMode(), "Poker", sf::Style::Default);
     window.setVerticalSyncEnabled(true);
 
+    std::vector<Screen*>screens;
+    int currentScreen = 0; //startscreen is main menu
+
     MainMenu menu;
+    screens.push_back(&menu);
+
     menu.setState(true);
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event)) //update game until clear
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    Game game;
+    screens.push_back(&game);
 
-        window.clear(sf::Color::Green);
-       
-        //draw here until display
-        if (menu.getState()) {
-            menu.Draw(window);
-        }
-        window.display();
+    //this loop chooses which screen is currently displayed
+    while (currentScreen >= 0) {
+        currentScreen = screens.at(currentScreen)->run(window);
     }
 
     return 0;

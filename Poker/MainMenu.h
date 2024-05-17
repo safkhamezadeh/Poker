@@ -1,25 +1,33 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Chips.h"
+#include "Button.h"
+#include "Screen.h"
 #include <vector>
 #include <iostream>
 
 constexpr auto MAX_MENU_ITEMS = 1;
 
-class MainMenu
+class MainMenu : public Screen
 {
 public:
-
+	//constructor
 	MainMenu();
-	void Draw(sf::RenderWindow& window);
 
+	//window drawing
+	void draw(sf::RenderWindow& window);
+
+	//menu states
 	bool getState() const { return state; }
 	void setState(bool state);
+
+	//game starting
+	void playGame();
+	int run(sf::RenderWindow& menuScreen);
+
 private:
 	bool state = false;
-	sf::Text textItems[MAX_MENU_ITEMS];
+	Button menuItems[MAX_MENU_ITEMS];
 	sf::Font font;
-
 
 };
 

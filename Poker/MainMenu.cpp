@@ -2,25 +2,103 @@
 
 MainMenu::MainMenu()
 {
-
+	if (!font.loadFromFile("C:\\Users\\SAfkh\\Documents\\OwnProjects\\Poker\\Assets\\Fonts\\bodoni.ttf")) {
+		std::cout << "Unable to load font" << std::endl;
+	}
+	Button playButton("Play", font);
+	
+	menuItems[0] = playButton;
 }
 
-void MainMenu::Draw(sf::RenderWindow& window)
+void MainMenu::draw(sf::RenderWindow& window)
 {
-	if (!font.loadFromFile("C:\\Users\\SAfkh\\Documents\\OwnProjects\\Poker\\Assets\\Fonts\\bodoni.ttf")) {
-		std::cout << "unable to load font";
+	for (int i = 0; i<MAX_MENU_ITEMS; i++)
+	{
+		menuItems[i].draw(window);
 	}
-
-	textItems[0].setFont(font);
-	textItems[0].setString("Play");
-	textItems[0].setCharacterSize(30);
-	textItems[0].setFillColor(sf::Color::Black);
-	textItems[0].setPosition(sf::Vector2f(sf::VideoMode::getDesktopMode().width / 2, sf::VideoMode::getDesktopMode().height / 2));
-
-	window.draw(textItems[0]);
 }
 
 void MainMenu::setState(bool state)
 {
 	this->state = state;
+}
+
+void MainMenu::playGame()
+{
+	state = false;
+}
+
+int MainMenu::run(sf::RenderWindow& menuScreen)
+{
+    bool mouseClicked = false;
+    while (menuScreen.isOpen())
+    {
+        
+        sf::Event event;
+        while (menuScreen.pollEvent(event)) //update game until clear
+        {
+            if (event.type == sf::Event::Closed) {
+                menuScreen.close();
+                return -1;
+            }
+
+            //checking if mouse hovers one of the buttons
+            if (event.type == sf::Event::MouseMoved) {
+                sf::Vector2f mousePosition(event.mouseMove.x, event.mouseMove.y);
+                //if mouse on a button
+                for (Button& button : menuItems) {
+                    if (button.contains(mousePosition)) {
+                        if (mouseClicked == false)
+                        {
+                            button.setColor("hover");
+                        }
+                    }
+                    else button.setColor("idle");
+                }
+            }
+
+            if (event.type == sf::Event::MouseButtonPressed)
+            {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    sf::Vector2f mousePosition(event.mouseButton.x, event.mouseButton.y);
+                    for (Button& button : menuItems)
+                    if (button.contains(mousePosition))
+                    {
+                        mouseClicked = true;
+                        button.setColor("pressed");
+                        //return 1;
+                    }
+                }
+            }
+
+            if (event.type == sf::Event::MouseButtonReleased)
+            {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    sf::Vector2f mousePosition(event.mouseButton.x, event.mouseButton.y);
+                    for (Button& button : menuItems)
+                        if (button.contains(mousePosition))
+                        {
+                            button.setColor("hover");
+                            if (&button == &menuItems[0])
+                                return 1;
+
+                            //expand with other buttons
+                        }
+                }
+                mouseClicked = false;
+            }
+        }
+
+        menuScreen.clear(sf::Color::Green); //the background color
+
+        //draw here until display
+        if (getState() == true) {
+            draw(menuScreen);
+        }
+        menuScreen.display();
+    }
+
+
+	return -1;
 }
