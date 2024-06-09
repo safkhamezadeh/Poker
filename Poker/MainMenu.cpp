@@ -2,7 +2,7 @@
 
 MainMenu::MainMenu()
 {
-	if (!font.loadFromFile("C:\\Users\\SAfkh\\Documents\\OwnProjects\\Poker\\Assets\\Fonts\\bodoni.ttf")) {
+	if (!font.loadFromFile("../Assets/Fonts/bodoni.ttf")) {
 		std::cout << "Unable to load font" << std::endl;
 	}
 	Button playButton("Play", font);
