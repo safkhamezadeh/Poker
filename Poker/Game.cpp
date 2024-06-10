@@ -56,9 +56,19 @@ int Game::run(sf::RenderWindow& gameWindow)
 				return -1;
 			}
 
+			if (event.type == sf::Event::KeyPressed)
+			{
+				if (event.key.scancode == sf::Keyboard::Scan::Escape)
+				{
+					return 0;
+
+				}
+
+			}
+
 		}
 
-		gameWindow.clear(sf::Color(53,101,77));//background color
+		gameWindow.clear(sf::Color(53,101,77));//poker table background color
 		drawGame(gameWindow);
 		gameWindow.display();
 

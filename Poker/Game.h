@@ -44,6 +44,9 @@ private:
 	//helper functions
 
 
+	//list of available playerNames
+	std::vector<std::string> RandomPlayerNamesList;
+
 	
 
 };
