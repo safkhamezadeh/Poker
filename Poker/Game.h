@@ -8,7 +8,7 @@
 class Game : public Screen
 {
 public:
-	//constructor
+	//constructor and destructor
 	Game();
 	~Game();
 

@@ -33,10 +33,11 @@ int MainMenu::run(sf::RenderWindow& menuScreen)
     bool mouseClicked = false;
     while (menuScreen.isOpen())
     {
-        
+    
         sf::Event event;
         while (menuScreen.pollEvent(event)) //update game until clear
         {
+            sf::Vector2f mousePosition(sf::Mouse::getPosition(menuScreen));
             if (event.type == sf::Event::Closed) {
                 menuScreen.close();
                 return -1;
@@ -44,7 +45,6 @@ int MainMenu::run(sf::RenderWindow& menuScreen)
 
             //checking if mouse hovers one of the buttons
             if (event.type == sf::Event::MouseMoved) {
-                sf::Vector2f mousePosition(event.mouseMove.x, event.mouseMove.y);
                 //if mouse on a button
                 for (Button& button : menuItems) {
                     if (button.contains(mousePosition)) {
@@ -61,7 +61,6 @@ int MainMenu::run(sf::RenderWindow& menuScreen)
             {
                 if (event.mouseButton.button == sf::Mouse::Left)
                 {
-                    sf::Vector2f mousePosition(event.mouseButton.x, event.mouseButton.y);
                     for (Button& button : menuItems)
                     if (button.contains(mousePosition))
                     {
@@ -75,7 +74,6 @@ int MainMenu::run(sf::RenderWindow& menuScreen)
             if (event.type == sf::Event::MouseButtonReleased)
             {
                 if (event.mouseButton.button == sf::Mouse::Left) {
-                    sf::Vector2f mousePosition(event.mouseButton.x, event.mouseButton.y);
                     for (Button& button : menuItems)
                         if (button.contains(mousePosition))
                         {
