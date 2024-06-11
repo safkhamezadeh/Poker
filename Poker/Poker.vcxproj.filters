@@ -62,6 +62,9 @@
     <ClInclude Include="screens.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerNamesList.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Assets\Fonts\bodoni-mt-1.TTF">

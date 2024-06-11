@@ -1,10 +1,14 @@
 #pragma once
 #include "Player.h"
+#include "PlayerNamesList.hpp"
 #include <SFML/Graphics.hpp>
 #include "Screen.h"
 #include <vector>
 #include <string>
 #include <iostream>
+#include <ctime>
+#include <stdlib.h>
+
 class Game : public Screen
 {
 public:
@@ -32,7 +36,7 @@ private:
 	//player properties
 	std::vector<Player*> playerList;
 
-	//Player* mainPlayer = playerList.at(0); add this to constructor
+	Player* mainPlayer;
 	
 	//game properties;
 	bool gameIsRunning = false;
@@ -42,11 +46,7 @@ private:
 	std::vector<sf::Text> playerNames;
 
 	//helper functions
-
-
-	//list of available playerNames
-	std::vector<std::string> RandomPlayerNamesList;
-
+	std::string randomNameSelector();
 	
 
 };

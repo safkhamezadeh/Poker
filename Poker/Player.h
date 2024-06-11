@@ -5,6 +5,7 @@ class Player {
 public:
     //constructor
     Player(std::string name, int money);
+    Player(std::string name);
 
     //getter and setters
     int getMoney() const;
@@ -20,7 +21,7 @@ public:
 
 
 private:
-    int money;
+    int money = 5000;
     std::string name;
     bool fold;
 };

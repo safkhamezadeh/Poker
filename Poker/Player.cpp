@@ -7,6 +7,12 @@ Player::Player(std::string name, int money) {
     fold = false;
 }
 
+Player::Player(std::string name)
+{
+    this->name = name;
+    fold = false;
+}
+
 // Getter for money
 int Player::getMoney() const {
     return money;

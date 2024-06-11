@@ -3,6 +3,7 @@
 //constructor
 Game::Game()
 {
+	srand(time(NULL));
 	int maxPlayerAmount = 4;
 	gameIsRunning = true;
 	for (int i = 0; i < maxPlayerAmount; i++)
@@ -10,12 +11,13 @@ Game::Game()
 		createNewPlayer();
 	}
 
+	mainPlayer = playerList.at(0);
 }
 
 Game::~Game()
 {
 	for (Player* player : playerList) {
-		std::cout << "deleted " << player->getName();
+		std::cout << "deleted " << player->getName() << player->getMoney() <<std::endl;
 		delete player;
 	}
 	
@@ -24,7 +26,7 @@ Game::~Game()
 //playerList methods
 void Game::createNewPlayer()
 {
-	Player* player = new Player("john", 5000);
+	Player* player = new Player(randomNameSelector());
 	playerList.push_back(player);
 }
 
@@ -80,6 +82,12 @@ int Game::run(sf::RenderWindow& gameWindow)
 void Game::drawGame(sf::RenderWindow& window)
 {
 	//TODO implement
+}
+
+std::string Game::randomNameSelector()
+{
+	int index = rand() % AVAILABLE_NAMES.size();
+	return AVAILABLE_NAMES.at(index);
 }
 
 
