@@ -89,6 +89,3 @@ std::string Game::randomNameSelector()
 	int index = rand() % AVAILABLE_NAMES.size();
 	return AVAILABLE_NAMES.at(index);
 }
-
-
-
