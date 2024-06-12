@@ -46,9 +46,11 @@ void Game::startNewRound()
 
 int Game::run(sf::RenderWindow& gameWindow)
 {
+	Round round(playerList);
+
 	while (gameIsRunning)
 	{
-		//Round round(playerList);
+
 		sf::Event event;
 		while (gameWindow.pollEvent(event))
 		{
