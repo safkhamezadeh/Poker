@@ -5,28 +5,26 @@ Game::Game()
 {
 	srand(time(NULL));
 	int maxPlayerAmount = 4;
-	gameIsRunning = true;
 	for (int i = 0; i < maxPlayerAmount; i++)
 	{
 		createNewPlayer();
 	}
-
-	mainPlayer = playerList.at(0);
+	mainPlayer = &playerList.at(0);
+	gameIsRunning = true;
 }
 
 Game::~Game()
 {
-	for (Player* player : playerList) {
-		std::cout << "deleted " << player->getName() << player->getMoney() <<std::endl;
-		delete player;
+	for (Player player : playerList) {
+		std::cout << "deleted " << player.getName() << player.getMoney() <<std::endl;
+		//delete &player;
 	}
-	
 }
 
 //playerList methods
 void Game::createNewPlayer()
 {
-	Player* player = new Player(randomNameSelector());
+	Player player(randomNameSelector());
 	playerList.push_back(player);
 }
 
@@ -48,12 +46,14 @@ void Game::startNewRound()
 
 int Game::run(sf::RenderWindow& gameWindow)
 {
-	while (gameWindow.isOpen())
+	while (gameIsRunning)
 	{
+		//Round round(playerList);
 		sf::Event event;
 		while (gameWindow.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed) {
+				quitGame();
 				gameWindow.close();
 				return -1;
 			}
@@ -63,11 +63,8 @@ int Game::run(sf::RenderWindow& gameWindow)
 				if (event.key.scancode == sf::Keyboard::Scan::Escape)
 				{
 					return 0;
-
 				}
-
 			}
-
 		}
 
 		gameWindow.clear(sf::Color(53,101,77));//poker table background color

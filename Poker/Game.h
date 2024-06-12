@@ -3,11 +3,13 @@
 #include "PlayerNamesList.hpp"
 #include <SFML/Graphics.hpp>
 #include "Screen.h"
+#include "Round.h"
 #include <vector>
 #include <string>
 #include <iostream>
 #include <ctime>
 #include <stdlib.h>
+
 
 class Game : public Screen
 {
@@ -29,18 +31,18 @@ public:
 	//draw methods
 	void drawGame(sf::RenderWindow& window);
 
-	bool getGameIsRunning() const { return gameIsRunning; }
-	void setGameIsRunning(bool running);
+	bool getRoundIsRunning() const { return roundIsRunning; }
+	void setRoundIsRunning(bool running);
 
 private:
 	//player properties
-	std::vector<Player*> playerList;
+	std::vector<Player> playerList;
 
 	Player* mainPlayer;
 	
 	//game properties;
-	bool gameIsRunning = false;
-
+	bool roundIsRunning = false;
+	bool gameIsRunning;
 	//gui properties
 	std::vector<sf::Text> playerListMoney;
 	std::vector<sf::Text> playerNames;
