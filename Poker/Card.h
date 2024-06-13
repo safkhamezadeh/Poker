@@ -1,4 +1,5 @@
 #pragma once
+#include "SFML/Graphics/RectangleShape.hpp"
 enum Suit
 {
 	Hearts, Diamonds, Clubs, Spades
@@ -16,10 +17,11 @@ public:
 	Card();
 	Card(Rank rank, Suit suit);
 	~Card();
+	void draw();
 
 private:
 	Suit suit;
 	Rank rank;
-
+	sf::RectangleShape shape;
 };
 

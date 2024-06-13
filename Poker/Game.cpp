@@ -17,7 +17,7 @@ Game::~Game()
 {
 	for (Player player : playerList) {
 		std::cout << "deleted " << player.getName() << player.getMoney() <<std::endl;
-		//delete &player;
+		
 	}
 }
 

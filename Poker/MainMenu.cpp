@@ -5,7 +5,7 @@ MainMenu::MainMenu()
 	if (!font.loadFromFile("../Assets/Fonts/bodoni.ttf")) {
 		std::cout << "Unable to load font" << std::endl;
 	}
-	Button playButton("Play", font);
+	Button playButton("play", font);
 	
 	menuItems[0] = playButton;
 }

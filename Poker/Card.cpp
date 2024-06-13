@@ -13,3 +13,7 @@ Card::Card(Rank rank, Suit suit)
 Card::~Card()
 {
 }
+
+void Card::draw()
+{
+}

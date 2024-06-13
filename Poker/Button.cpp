@@ -28,6 +28,26 @@ Button::Button(std::string text, sf::Font& font)
     this->text.setPosition(shape.getPosition());
 }
 
+Button::Button(std::string text, sf::Font& font, sf::Vector2f position)
+{
+    shape.setSize(shapeSize);
+    shape.setFillColor(idleColor);
+    shape.setOutlineColor(outlineColor);
+    shape.setOutlineThickness(4.f);
+    shape.setOrigin(shapeSize / 2.f);
+    shape.setPosition(position);
+
+    this->text.setFont(font);
+    this->text.setString(text);
+    this->text.setCharacterSize(50);
+    this->text.setFillColor(sf::Color::Black);
+    this->text.setStyle(sf::Text::Bold);
+
+    // Position the text in the center of the button
+    this->text.setOrigin(this->text.getLocalBounds().width / 2.f, this->text.getLocalBounds().height / 2.f);
+    this->text.setPosition(shape.getPosition());
+}
+
 void Button::setColor(std::string type)
 {
     if (type == "hover") {

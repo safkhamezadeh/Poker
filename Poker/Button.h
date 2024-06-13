@@ -8,7 +8,7 @@ public:
 	//constructors
 	Button();
 	Button(std::string text, sf::Font& font);
-	Button(std::string text, sf::Font& font, sf::Vector2f position, sf::Color); //TODO implement
+	Button(std::string text, sf::Font& font, sf::Vector2f position); //TODO implement
 
 	//getters and setters
 	sf::Text getText() { return text; }
