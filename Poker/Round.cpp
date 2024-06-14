@@ -1,8 +1,12 @@
 #include "Round.h"
 
-Round::Round(std::vector<Player> &players)
+Round::Round(std::vector<Player> &players, sf::RenderWindow& gameWindow)
 {
 	totalBet = 0;
-	bigBlind = &players.at(1);
-	std::cout << bigBlind->getName();
+	
+}
+
+int Round::run(sf::RenderWindow& roundScreen)
+{
+	return 0;
 }

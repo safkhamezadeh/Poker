@@ -24,4 +24,3 @@ private:
 	Rank rank;
 	sf::RectangleShape shape;
 };
-

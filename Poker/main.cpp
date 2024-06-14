@@ -2,7 +2,6 @@
 #include "screens.hpp"
 #include <vector>
 
-
 /*
 the screen numbers:
 - mainMenuScreen = 0

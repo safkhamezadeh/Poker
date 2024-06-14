@@ -39,14 +39,19 @@ void Game::quitGame()
 	gameIsRunning = false;
 }
 
-void Game::startNewRound()
+void Game::startNewRound(sf::RenderWindow& gameWindow)
 {
-	//TODO implement
+	
+	if (currentRound)
+	{
+		delete currentRound;
+	}
+	currentRound = new Round(playerList, gameWindow);
+		//TODO implement
 }
 
 int Game::run(sf::RenderWindow& gameWindow)
 {
-	Round round(playerList);
 
 	while (gameIsRunning)
 	{
@@ -71,6 +76,9 @@ int Game::run(sf::RenderWindow& gameWindow)
 
 		gameWindow.clear(sf::Color(53,101,77));//poker table background color
 		drawGame(gameWindow);
+
+		//round start	
+
 		gameWindow.display();
 
 	}

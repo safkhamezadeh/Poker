@@ -3,13 +3,16 @@
 #include <vector>
 #include "Deck.h"
 #include "Card.h"
+#include "Screen.h"
+#include <SFML/Graphics.hpp>
 
-#include<iostream>;
+#include<iostream>
 
-class Round
+class Round : public Screen
 {
 public:
-	Round(std::vector<Player>& players);
+	Round(std::vector<Player>& players, sf::RenderWindow& gameWindow);
+	int run(sf::RenderWindow& roundScreen);
 
 private:
 	int totalBet;
@@ -21,4 +24,3 @@ private:
 	Card communityCards[5];
 	
 };
-

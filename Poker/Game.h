@@ -24,7 +24,7 @@ public:
 
 	//game methods
 	void quitGame();
-	void startNewRound();
+	void startNewRound(sf::RenderWindow& window);
 
 	int run(sf::RenderWindow& game);
 
@@ -43,6 +43,8 @@ private:
 	//game properties;
 	bool roundIsRunning = false;
 	bool gameIsRunning;
+	Round* currentRound = nullptr;
+
 	//gui properties
 	std::vector<sf::Text> playerListMoney;
 	std::vector<sf::Text> playerNames;
