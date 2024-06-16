@@ -4,18 +4,15 @@
 class Deck
 {
 public:
-	//constructor and destructor
+	//singleton
 	Deck();
 
-	//getter
-	std::vector<Card> getDeck();
+	static std::vector<Card> cardDeck;
 
 	//deckMethods;
-	void shuffle();
-	Card dealCard();
+	static void shuffle();
+	static Card dealCard();
 
 private:
-	std::vector<Card> cardDeck;
-
 };
 
