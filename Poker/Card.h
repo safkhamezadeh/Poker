@@ -1,5 +1,5 @@
 #pragma once
-#include "SFML/Graphics/RectangleShape.hpp"
+#include "SFML/Graphics.hpp"
 enum Suit
 {
 	Hearts, Diamonds, Clubs, Spades
@@ -23,4 +23,8 @@ private:
 	Suit suit;
 	Rank rank;
 	sf::RectangleShape shape;
+	sf::Sprite suitSprite;
+	sf::Texture rankTexture;
+
+
 };
