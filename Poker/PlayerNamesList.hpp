@@ -23,11 +23,10 @@ const std::vector<std::string> AVAILABLE_NAMES{
 "Jonathan Taylor",
 "Kimberly Thompson",
 "Andrew Walker",
-"Stephanie White"
-"Mark Van der Vlis"
-"Novie Jean Oclarit Bayona"
-"McJuni"
-"Yitao Zhao"
-"Miantao Zhao"
-
+"Stephanie White",
+"Mark Van der Vlis",
+"Novie Jean Oclarit Bayona",
+"McJuni",
+"Yitao Zhao",
+"Miantao Zhao",
 };
